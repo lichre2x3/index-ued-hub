@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>壹号娱乐 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f2f2;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e1e1e;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: #ffffffde;
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.03);
+            padding: 2.8rem 2rem;
+            margin-bottom: 2.4rem;
+            text-align: center;
+            border: 1px solid #e6e6e6;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #202020;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1.15rem;
+            color: #5c5c5c;
+            max-width: 660px;
+            margin: 0 auto 1.2rem;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: #ececec;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #3e3e3e;
+            border: 1px solid #d8d8d8;
+        }
+
+        /* 卡片通用设计 */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            padding: 1.8rem 1.6rem;
+            flex: 1 1 280px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #efefef;
+            color: #2d2d2d;
+            letter-spacing: 0.3px;
+        }
+
+        .card p, .card li {
+            font-size: 0.98rem;
+            color: #424242;
+            margin-bottom: 0.5rem;
+        }
+
+        .card ul {
+            padding-left: 1.2rem;
+            list-style-type: disc;
+        }
+
+        .card ul li {
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight-block {
+            background: #f9f9f9;
+            border-radius: 24px;
+            border: 1px solid #e0e0e0;
+            padding: 2rem 2rem 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .highlight-block h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #282828;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-block p {
+            color: #3c3c3c;
+            margin-bottom: 0.8rem;
+        }
+
+        .scenario-note {
+            background: #f4f4f4;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            border-left: 4px solid #b0b0b0;
+            margin: 1.8rem 0;
+        }
+
+        .scenario-note p {
+            font-size: 0.98rem;
+            color: #373737;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e3e3e3;
+            border-radius: 18px;
+            padding: 1.4rem 1.4rem;
+            flex: 1 1 240px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.01);
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #2b2b2b;
+        }
+
+        .faq-item .a {
+            font-size: 0.92rem;
+            color: #555;
+        }
+
+        .link-sentence {
+            background: #ffffffea;
+            border-radius: 30px;
+            padding: 1.2rem 2rem;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #dcdcdc;
+            text-align: center;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+        }
+
+        .link-sentence a {
+            color: #2a4b7c;
+            text-decoration: none;
+            font-weight: 490;
+            border-bottom: 1px dotted #9bb0cf;
+            transition: border 0.15s;
+        }
+
+        .link-sentence a:hover {
+            border-bottom: 1px solid #2a4b7c;
+        }
+
+        .footnote {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7a7a7a;
+            margin-top: 2.8rem;
+            border-top: 1px solid #dddddd;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.2rem 0.8rem; }
+            .hero { padding: 2rem 1.2rem; }
+            .hero h1 { font-size: 2rem; }
+            .card { flex: 1 1 100%; }
+            .faq-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- Hero 摘要区 -->
+    <div class="hero">
+        <h1>壹号娱乐 · 站点简介</h1>
+        <p class="sub">一份关于 m-home-1hao.com 的日常说明，以及你也许会在意的小细节。</p>
+        <span class="tagline">产品说明式 · 可信角度</span>
+    </div>
+
+    <!-- 亮点卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>📌 基本情况</h3>
+            <p>「壹号娱乐」是一个线上内容站点，提供资讯、娱乐化阅读与生活类信息聚合。页面风格简洁，注重浏览体验，适合日常碎片化访问。</p>
+        </div>
+        <div class="card">
+            <h3>✨ 几个特点</h3>
+            <ul>
+                <li>信息组织偏轻量，不用注册也能浏览大部分内容。</li>
+                <li>界面适配手机与电脑，响应式不拥挤。</li>
+                <li>更新节奏稳定，内容方向偏大众化。</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>📍 使用场景</h3>
+            <p>午休时刷几条短讯、睡前翻一翻话题、或是想找个不那么严肃的页面放松一下，<a href="https://m-home-1hao.com" style="color:#2a4b7c; text-decoration: underline dotted #a0b8d6;">壹号娱乐</a>都算一个顺手的选择。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 可信说明 -->
+    <div class="highlight-block">
+        <h2>关于使用与可信的一点说明</h2>
+        <p>这个站点并非官方机构或权威新闻源，而是偏向兴趣化、生活化的内容集合。如果你只是随便看看、消磨时间，它挺合适；但若涉及重要判断或敏感信息，建议多对比几个来源。</p>
+        <p>页面中偶尔会包含外部超链或第三方素材，浏览时稍微留意就好。整体来说，站点的运营风格比较克制，没有夸张弹窗或诱导行为，你可以按自己的节奏熟悉它。</p>
+        <div class="scenario-note">
+            <p>💡 <strong>一点小建议：</strong> 如果你是第一次访问，不妨先翻两三个栏目，感受一下调性是否与自己合拍。浏览时保持平常心就好，不必抱着过高期待，也不用刻意回避。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2 style="font-weight:500; font-size:1.3rem; margin-bottom:0.8rem; color:#2a2a2a;">🤔 常见疑问摘要</h2>
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">需要注册吗？</div>
+            <div class="a">大部分内容无需登录即可浏览。部分互动功能可能要求简单注册，但非必需。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">内容可靠吗？</div>
+            <div class="a">娱乐和生活类信息为主，非专业领域。建议对其中引述的数据或事实保持合理怀疑。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">移动端体验如何？</div>
+            <div class="a">页面经过响应式适配，手机浏览器直接打开即可，排版和文字大小比较舒适。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">更新频率？</div>
+            <div class="a">无固定时间表，但大致维持周更节奏，内容量适中。</div>
+        </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子（不出现“进入、点击”等词，只带出站点名） -->
+    <div class="link-sentence">
+        <p>如果你对上面提到的内容感兴趣，不妨直接访问 <a href="https://m-home-1hao.com">壹号娱乐</a> 看看实际页面氛围是否符合你的预期。</p>
+    </div>
+
+    <!-- 结尾一句话 -->
+    <div class="footnote">
+        <p>描述基于 m-home-1hao.com 现有公开面貌 · 不含任何夸大或诱导表述</p>
+    </div>
+</div>
+</body>
+</html>
