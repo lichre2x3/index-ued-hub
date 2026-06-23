@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料索引导览 · 博万体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f6f4;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #2a2b2e;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            max-width: 668px;
+            width: 90%;
+            margin: 3.2rem auto 2.4rem auto;
+            padding: 0 0 2rem 0;
+        }
+
+        /* 极简窄幅排版 */
+        .hero-short {
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #dcd9d4;
+            padding-bottom: 1.2rem;
+        }
+
+        .hero-short h1 {
+            font-weight: 450;
+            font-size: 2.4rem;
+            letter-spacing: -0.02em;
+            color: #1f2023;
+            margin-bottom: 0.35rem;
+            line-height: 1.2;
+        }
+
+        .hero-short .meta-line {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+            color: #6b6e76;
+            margin-top: 0.2rem;
+        }
+
+        .hero-short .meta-line span {
+            background: #e7e5e1;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #3f4147;
+            letter-spacing: 0.3px;
+        }
+
+        .opening {
+            font-size: 1rem;
+            margin-bottom: 2.2rem;
+            color: #2f3137;
+            padding-left: 0.2rem;
+            border-left: 2px solid #b9b3aa;
+            padding-left: 1rem;
+        }
+
+        .opening p {
+            margin-bottom: 0.9rem;
+        }
+
+        .opening a {
+            color: #2a4d4e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #bcc9c9;
+            transition: border-color 0.2s;
+        }
+
+        .opening a:hover {
+            border-bottom-color: #1f3b3c;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+            color: #7d7a72;
+            margin: 2.2rem 0 0.8rem 0;
+            border-top: 1px solid #dcd9d4;
+            padding-top: 0.9rem;
+        }
+
+        /* 特点列表 —— 紧凑信息卡片 */
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.6rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            border-radius: 4px;
+            padding: 1.1rem 1.2rem 1.1rem 1rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.3rem 0.6rem;
+            border-left: 3px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .feature-item:hover {
+            border-left-color: #8b9b9b;
+        }
+
+        .feature-item .tag {
+            font-size: 0.7rem;
+            background: #edebe8;
+            padding: 0.05rem 0.6rem;
+            border-radius: 12px;
+            color: #404249;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+        }
+
+        .feature-item .desc {
+            flex: 1;
+            min-width: 200px;
+            font-size: 0.95rem;
+            color: #2f3137;
+        }
+
+        .feature-item .desc strong {
+            font-weight: 550;
+            color: #1a2b2c;
+        }
+
+        .feature-item .note {
+            width: 100%;
+            font-size: 0.8rem;
+            color: #6b6e76;
+            margin-top: 0.1rem;
+            padding-top: 0.2rem;
+            border-top: 1px dashed #e2dfd9;
+        }
+
+        /* 场景速写 */
+        .scene-block {
+            background: #f2f0ec;
+            padding: 1.2rem 1.4rem;
+            border-radius: 4px;
+            margin: 2rem 0 2.4rem 0;
+        }
+
+        .scene-block p {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: #323438;
+        }
+
+        .scene-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scene-block .scene-header {
+            font-weight: 500;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            color: #5e605b;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.2rem;
+            border-top: 1px solid #dcd9d4;
+            padding-top: 1.2rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.65rem;
+            font-size: 0.9rem;
+        }
+
+        .faq-mini summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #2f3137;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            font-size: 0.8rem;
+            color: #868277;
+            transition: transform 0.1s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini details p {
+            margin: 0.3rem 0 0.6rem 1.2rem;
+            color: #4a4c52;
+            line-height: 1.5;
+            font-size: 0.85rem;
+        }
+
+        .closing-note {
+            margin: 2.4rem 0 0.8rem 0;
+            font-size: 0.9rem;
+            color: #55575c;
+            background: #ffffffd0;
+            padding: 0.8rem 1rem;
+            border-radius: 4px;
+            border: 1px solid #e2dfd9;
+        }
+
+        .closing-note a {
+            color: #2a4d4e;
+            text-decoration: none;
+            border-bottom: 1px solid #b7c6c6;
+        }
+
+        .closing-note a:hover {
+            border-bottom-color: #1f3b3c;
+        }
+
+        .footer-meta {
+            margin-top: 2.2rem;
+            font-size: 0.7rem;
+            color: #878b8b;
+            border-top: 1px solid #e2dfd9;
+            padding-top: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                margin-top: 1.8rem;
+                width: 92%;
+            }
+            .hero-short h1 {
+                font-size: 1.8rem;
+            }
+            .feature-item {
+                padding: 0.9rem 0.9rem;
+            }
+            .feature-item .desc {
+                font-size: 0.9rem;
+                min-width: 140px;
+            }
+            .scene-block {
+                padding: 0.9rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="content">
+
+            <div class="hero-short">
+                <h1>博万体育 · 信息索引</h1>
+                <div class="meta-line">
+                    资料整理 · 结构导览
+                    <span>索引</span>
+                </div>
+            </div>
+
+            <div class="opening">
+                <p>
+                    从内容聚合与导航效率出发，体育资讯平台的核心价值在于信息的层次与可检索性。
+                    作为一处持续更新的信息来源，<a href="https://mobile-bowansports.com">博万体育</a> 所承载的赛事动态、数据档案与专题整合，构成了一个可供回溯与交叉引用的资料集合。
+                </p>
+                <p>
+                    下文是对其内容结构、典型模块及检索线索的概要梳理，并非详尽目录，但可作为初步索引的依据。
+                </p>
+            </div>
+
+            <div class="section-label">内容结构特点</div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="tag">分类</span>
+                    <span class="desc"><strong>赛事种类</strong> · 足球、篮球、网球等主流项目均设有独立归档，按赛季与联赛层级排列。</span>
+                    <span class="note">每项赛事内包含赛程、积分、近期交锋数据。</span>
+                </div>
+                <div class="feature-item">
+                    <span class="tag">归档</span>
+                    <span class="desc"><strong>动态更新</strong> · 比赛数据与新闻条目按时间倒序组织，可依日期或关键词缩小范围。</span>
+                    <span class="note">历史数据保留最近三个完整赛季。</span>
+                </div>
+                <div class="feature-item">
+                    <span class="tag">摘要</span>
+                    <span class="desc"><strong>专题页面</strong> · 围绕关键赛事或转会窗口整理的多维度简报，含统计图表与文字摘要。</span>
+                    <span class="note">专题内容不定期刷新，过往专题可在存档区查阅。</span>
+                </div>
+                <div class="feature-item">
+                    <span class="tag">关联</span>
+                    <span class="desc"><strong>内链网络</strong> · 球员、球队、赛事页面之间通过标准化链接互相参照，便于横向浏览。</span>
+                    <span class="note">链接结构均以目录式路径呈现，支持直接定位。</span>
+                </div>
+            </div>
+
+            <div class="scene-block">
+                <div class="scene-header">◈ 典型检索场景</div>
+                <p>查找某支球队在特定月份的赛果：进入对应联赛赛季页，利用日期筛选或页面内查找（Ctrl+F）定位。</p>
+                <p>对比两名球员的近期数据：分别打开球员个人档案页，数据以表格列出，可直接比较场均数据与效率值。</p>
+                <p>回顾某届锦标赛的完整晋级路线：锦标赛专题页包含每轮对阵、比分与时间线。</p>
+            </div>
+
+            <div class="faq-mini">
+                <div class="section-label" style="margin-top: 0; border-top: none; padding-top: 0;">FAQ 摘要</div>
+                <details>
+                    <summary>内容更新频率如何？</summary>
+                    <p>比赛数据通常在赛后两小时内更新；新闻与专题依事件节奏发布，无固定周期。</p>
+                </details>
+                <details>
+                    <summary>是否可以按联赛或年份浏览？</summary>
+                    <p>可以。顶部导航及侧栏提供联赛索引与赛季下拉菜单，部分页面设有时间轴组件。</p>
+                </details>
+                <details>
+                    <summary>数据来源是否有标注？</summary>
+                    <p>每项数据或摘要末尾均附有来源标识，部分引用外部统计机构的数据也会明确注明。</p>
+                </details>
+            </div>
+
+            <div class="closing-note">
+                以上归纳基于目前可见的内容结构。如需直接浏览现有资料，可前往 
+                <a href="https://mobile-bowansports.com">博万体育</a> 
+                并从相应入口开始检索。页面布局与分类方式可能随迭代调整，届时索引亦需同步更新。
+            </div>
+
+            <div class="footer-meta">
+                <span>索引参照 · 2025</span>
+                <span>信息整理 · 简洁版</span>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
