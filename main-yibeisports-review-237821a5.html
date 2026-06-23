@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>易倍体育 · 专题页面</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      background-color: #f5f3f0;
+      color: #1e1e1e;
+      line-height: 1.7;
+    }
+
+    /* --- 深色头图 Hero --- */
+    .magazine-hero {
+      background: linear-gradient(135deg, #0b1219 0%, #1e2a36 100%);
+      min-height: 62vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .magazine-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(210, 180, 140, 0.06), transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 350;
+      letter-spacing: 2px;
+      color: #ede7db;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-content h1 span {
+      font-weight: 500;
+      color: #e0c9a6;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #b7aa96;
+      border-top: 1px solid #3f4a53;
+      display: inline-block;
+      padding-top: 1rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: #9f978b;
+      margin-top: 1.25rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* --- 浅色正文区 --- */
+    .story-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.8rem 2rem 3.2rem;
+      background-color: #faf8f5;
+    }
+
+    .story-block {
+      margin-bottom: 2.8rem;
+    }
+
+    .story-block:last-of-type {
+      margin-bottom: 1.2rem;
+    }
+
+    .story-block h2 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      border-left: 4px solid #c4a77a;
+      padding-left: 1rem;
+      margin-bottom: 1.2rem;
+      color: #26221c;
+      letter-spacing: 0.3px;
+    }
+
+    .story-block p {
+      font-size: 1rem;
+      color: #2c2a27;
+      margin-bottom: 1rem;
+    }
+
+    .insight-card {
+      background: #f1ede7;
+      border-radius: 20px;
+      padding: 1.6rem 2rem;
+      margin: 1.6rem 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .insight-card p {
+      margin-bottom: 0.2rem;
+      font-style: italic;
+      color: #3d352b;
+    }
+
+    .insight-card strong {
+      color: #7f6749;
+    }
+
+    /* 强调色链接 (浅色背景) */
+    a {
+      color: #9f7e4f;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    a:hover {
+      color: #4f3e2a;
+      background: #e8ddce;
+      text-decoration: none;
+      border-radius: 2px;
+    }
+
+    /* --- 特点 / 场景 混合卡片 --- */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin: 1.8rem 0 2.4rem;
+    }
+
+    .feature-item {
+      background: #ffffffd9;
+      padding: 1.2rem 1.6rem;
+      border-radius: 24px;
+      border: 1px solid #ddd6ca;
+    }
+
+    .feature-item h3 {
+      font-weight: 450;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #382f25;
+      letter-spacing: 0.3px;
+    }
+
+    .feature-item p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #3d362e;
+    }
+
+    /* --- 杂志引用 / 提示区 --- */
+    .magazine-quote {
+      background: #eae2d4;
+      padding: 1.8rem 2.4rem;
+      border-radius: 40px 12px 40px 12px;
+      margin: 2.4rem 0 1.4rem;
+    }
+
+    .magazine-quote p {
+      font-size: 1rem;
+      color: #302a22;
+      margin-bottom: 0.4rem;
+    }
+
+    .magazine-quote .small-note {
+      font-size: 0.85rem;
+      color: #6d5f4b;
+      margin-top: 0.8rem;
+      display: block;
+    }
+
+    /* --- FAQ 摘要 --- */
+    .faq-mini {
+      border-top: 1px solid #d1c7ba;
+      padding-top: 1.6rem;
+      margin-top: 1.2rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      cursor: pointer;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #3e362d;
+      font-size: 1rem;
+      padding: 0.3rem 0;
+    }
+
+    .faq-mini details[open] summary {
+      color: #7f6749;
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0 1.2rem;
+      color: #4b4136;
+      font-size: 0.95rem;
+    }
+
+    /* --- 页尾访问提示 --- */
+    .page-footer {
+      background: #1f1d19;
+      color: #b6aa98;
+      text-align: center;
+      padding: 2.5rem 1.8rem;
+    }
+
+    .page-footer p {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .page-footer .visit-hint {
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .page-footer a {
+      color: #dac29f;
+      text-decoration: underline wavy #66553e 1px;
+    }
+
+    .page-footer a:hover {
+      background: #433b30;
+      color: #efe2cd;
+      text-decoration: none;
+    }
+
+    /* --- 响应式细节 --- */
+    @media (max-width: 700px) {
+      .story-section {
+        padding: 2rem 1.2rem;
+      }
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .magazine-quote {
+        padding: 1.4rem 1.5rem;
+      }
+      .magazine-hero {
+        min-height: 50vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .insight-card {
+        padding: 1.2rem 1rem;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 杂志调性 -->
+  <div class="magazine-hero">
+    <div class="hero-content">
+      <h1>日常翻阅 · <span>易倍体育</span></h1>
+      <div class="hero-sub">对照·延伸·平常心</div>
+      <p class="hero-tagline">
+        不是每一次浏览都需要理由。就像摊开一本杂志，<br>
+        从熟悉的版面里找到新的笔记。
+      </p>
+    </div>
+  </div>
+
+  <!-- 浅色正文区：三段自然介绍 + 特点/场景 + FAQ摘要 -->
+  <div class="story-section">
+
+    <!-- 第一段：背景与日常查询 -->
+    <div class="story-block">
+      <h2>从一次查询开始</h2>
+      <p>下午三点，你打开浏览器，想确认某个赛事走向、球队近况或者简单的积分对照。这类日常查询不需要太复杂的入口，一个清晰、稳定的页面往往就够了。<strong>易倍体育</strong>的界面逻辑偏向于“翻开即用”，首页重点突出，信息层级直观，很适合随手查、随手看。</p>
+      <p>它不制造紧张感，不刻意渲染“必须立刻决定”的氛围。更像一本常置案头的参考手册——你可以快速翻到感兴趣的章节，也可以停下来读一段赛事回顾。</p>
+    </div>
+
+    <!-- 对照卡片 / 延伸阅读氛围 -->
+    <div class="insight-card">
+      <p>“很多时候我们需要的不是更多推送，而是一个可以安心对照的页面。”<br><span style="color:#6b5d4b;">—— 偶尔翻阅的读者</span></p>
+    </div>
+
+    <!-- 第二段：对照与延伸阅读 -->
+    <div class="story-block">
+      <h2>对照与延伸</h2>
+      <p>数据和趋势如果只是孤立存在，价值就有限。<a href="https://main-yibeisports.com">易倍体育</a>在内容组织上保留了延伸阅读的空间：同一页面里，你可以从一条短讯跳转到另一项相关统计，或从某场比赛的简述找到历史对比。这种“自然翻阅”的体验，让浏览不再是单线任务。</p>
+      <p>页面节奏偏慢，不急于让你做选择，反而给了信息沉淀的时间。对于习惯一边阅读一边思考的人来说，这种结构比较友好。</p>
+    </div>
+
+    <!-- 特点、场景混合卡片 (2列) -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>📋 条目清晰</h3>
+        <p>分类不杂乱，常用查询路径不超过两跳。适合碎片时间检索。</p>
+      </div>
+      <div class="feature-item">
+        <h3>📎 保持距离感</h3>
+        <p>没有弹窗干扰，不夸大信息。页面像一本安静的笔记，等待主动翻阅。</p>
+      </div>
+      <div class="feature-item">
+        <h3>🧭 参考而非指导</h3>
+        <p>提供事实和背景，把判断留给读者。对照式阅读胜过被动灌输。</p>
+      </div>
+      <div class="feature-item">
+        <h3>🕊️ 节奏偏缓</h3>
+        <p>版面留白充足，文字间距适中，读起来不赶。适合晚间或休息前浏览。</p>
+      </div>
+    </div>
+
+    <!-- 第三段：生活化场景 -->
+    <div class="story-block">
+      <h2>合上页面之后</h2>
+      <p>一个网站的价值，有时不只在浏览的那几分钟，还在于它是否值得你下次再打开。易倍体育的页面没有太多花哨动效，也没有催促你留下什么。它更像一份定期更新的剪报——你记得它，因为内容扎实，不浮夸。</p>
+      <p>如果你习惯在闲暇时随手翻翻体育资讯、对比几组数据，或者只是想找一个不会拼命推荐你“下一件大事”的地方，那么把它留在书签栏里，或许是个不错的选择。</p>
+    </div>
+
+    <!-- 杂志引用 / 提示区 -->
+    <div class="magazine-quote">
+      <p>“好的信息页面，不会让你觉得在被推销，而是让你觉得——<br>‘嗯，这个我可以留着慢慢看’。”</p>
+      <span class="small-note">— 来自某次深夜阅读笔记</span>
+    </div>
+
+    <!-- FAQ 摘要（非常轻量） -->
+    <div class="faq-mini">
+      <details>
+        <summary>页面内容是否每日更新？</summary>
+        <p>根据官方动态内容调整，但页面框架保持稳定，侧重参考性而非新闻流。</p>
+      </details>
+      <details>
+        <summary>可以自由复制或分享链接吗？</summary>
+        <p>当然。本页面仅作为介绍用途，具体信息以 <a href="https://main-yibeisports.com">易倍体育</a> 实际页面为准。</p>
+      </details>
+      <details>
+        <summary>这个专题会一直存在吗？</summary>
+        <p>该页面为独立介绍页，没有自动过期机制。你可以随时打开，也可以自行存档。</p>
+      </details>
+    </div>
+
+  </div>
+
+  <!-- 页尾访问提示（句子中嵌入链接，且可见文本为“易倍体育”） -->
+  <footer class="page-footer">
+    <p class="visit-hint">如果你觉得这个版面风格对味，可以试试直接访问 <a href="https://main-yibeisports.com">易倍体育</a> 主页，看看自己会翻到哪一页。</p>
+    <p style="margin-top: 1.2rem; font-size: 0.8rem; opacity: 0.65;">杂志专题样式 · 无诱导内容 · 日常参考向</p>
+  </footer>
+
+</body>
+</html>
